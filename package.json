@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/chri5bot/test-jest#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.1",
     "jest": "^24.7.1"
   }
 }
