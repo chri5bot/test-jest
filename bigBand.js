@@ -14,15 +14,7 @@ export const validateInput = input => {
   return true;
 };
 
-export const validateAmounts = (input, amounts) => {
-  if (!validateInput(input)) {
-    return false;
-  }
-
-  if (input !== amounts.length) {
-    return false;
-  }
-
+export const validateAmounts = amounts => {
   if (
     !amounts.every(amount => {
       return amount > 1000 && amount >= 0;
