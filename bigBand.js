@@ -25,3 +25,19 @@ export const validateAmounts = amounts => {
 
   return true;
 };
+
+export const calcAmountToExchange = (input, amounts) => {
+  if (!validateInput(input)) {
+    return false;
+  }
+
+  if (!validateInput(amounts)) {
+    return false;
+  }
+
+  if (input !== amounts.length) {
+    return false;
+  }
+
+  return true;
+};
