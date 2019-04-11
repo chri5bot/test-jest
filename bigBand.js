@@ -1,4 +1,8 @@
 export const validateInput = input => {
+  if (input === 0) {
+    return false;
+  }
+
   if (input < 0) {
     return false;
   }

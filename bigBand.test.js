@@ -4,6 +4,10 @@ import {
   calcAmountToExchange
 } from "./bigBand";
 
+test("validates if input is 0", () => {
+  expect(validateInput(0)).toBe(false);
+});
+
 test("validates if input is positive", () => {
   expect(validateInput(-1)).toBe(false);
 });
