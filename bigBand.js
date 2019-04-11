@@ -16,10 +16,14 @@ export const validateInput = input => {
 
 export const validateAmounts = amounts => {
   if (
-    !amounts.every(amount => {
-      return amount > 1000 && amount >= 0;
+    amounts.some(amount => {
+      return amount > 1000 || amount < 0;
     })
   ) {
+    return false;
+  }
+
+  if (amounts.length > 100) {
     return false;
   }
 
@@ -31,7 +35,7 @@ export const calcAmountToExchange = (input, amounts) => {
     return false;
   }
 
-  if (!validateInput(amounts)) {
+  if (!validateAmounts(amounts)) {
     return false;
   }
 
@@ -39,5 +43,21 @@ export const calcAmountToExchange = (input, amounts) => {
     return false;
   }
 
-  return true;
+  let sum = amounts.reduce((previous, current) => (current += previous));
+
+  let avg = sum / amounts.length;
+
+  let exchangeAmount = 0;
+
+  amounts.forEach(amount => {
+    if (amount < avg) {
+      exchangeAmount = exchangeAmount + (avg - amount);
+    }
+  });
+
+  const fact = Math.pow(10, 2);
+
+  const result = Math.floor(exchangeAmount * fact) / fact;
+
+  return result === 0.01 ? 0 : result;
 };
